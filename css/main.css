@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "HelveticaNeue-UltraLight";
+  src: url("../fonts/HelveticaNeue-UltraLight.ttf"); }
+
+body {
+  background-color: black;
+  color: #fff;
+  font-family: 'HelveticaNeue-UltraLight', sans-serif;
+  font-weight: 300;
+  position: relative; }
+
+h1, h2, h3, h4, h5 {
+  font-weight: 300; }
+
+h1 {
+  font-size: 120px; }
+
+dt {
+  font-weight: 600; }
+
+/* Colors to make available */
+.light-gray {
+  color: #ccc; }
+.gray {
+  color: #999; }
+
+/* CSS to handle HTML styling */
+
+.top-left {
+  float: left; }
+.top-right {
+  float: right; }
+
+.date {
+  font-size: 48px;
+  margin-left: 10px; }
+.time {
+  font-size: 110px;
+  margin-left: 10px; }
+
+/* CSS to handle weather forecast and icon styling */
+  .weather {
+    margin-left: auto;
+    display: inline-block;
+    text-align: right;
+    width: 230px; }
+
+  .weather-today .temperature {
+    font-size: 62px; }
+
+  .weather-week {
+    margin-right: 10px;
+    font-size: 24px; }
+
+    .weather-week .day {
+      display: inline-block;
+      margin-right: 10px;
+      width: 60px; }
+
+    .weather-week .temperature {
+      display: inline-block;
+      width: 65px; }
+
+/* CSS to handle calendar styling */
+
+ul.calendar {
+  list-style: none;
+  font-size: 24px;
+  margin-left: 10px;
+  padding: 0; }
+
+.calendar .event {
+  margin-bottom: 10px; }
+
+.calendar span {
+  display: inline-block; }
+
+  .calendar span.day {
+    font-weight: bold;
+    width: 128px;
+    vertical-align: top; }
+
+  .calendar span.summary {
+    max-width: 400px;
+    margin-left: 70px; }
+
+.calendar .event-details .details {
+  font-size: 20px;
+  padding-left: 0px; }
+
+
+
+/* CSS to handle weather icons */
+
+.dimmed {
+  color: #aaa; }
+
+.xxsmall, .xsmall, .small {
+  font-family: "HelveticaNeue-Medium", sans-serif;
+  letter-spacing: 0; }
+
+.xxsmall {
+  font-size: 15px; }
+  .xxsmall .wi {
+    line-height: 15px; }
+
+.xsmall {
+  font-size: 20px; }
+
+.small {
+  font-size: 25px; }
+
+.icon {
+  position: relative;
+  top: -10px;
+  display: inline-block;
+  font-size: 90px;
+  padding-right: 5px;
+  font-weight: 100;
+  margin-right: 10px; }
+
+.icon-small {
+  position: relative;
+  display: inline-block;
+  font-size: 25px;
+  padding-left: 0px;
+  padding-right: -10px;
+  font-weight: 100;
+  width: 20px; }

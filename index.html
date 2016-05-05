@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="SmartMirror">
+  <head>
+    <meta charset="utf-8">
+    <title>Smart Mirror</title>
+
+    <script src="js/annyang.js"></script>
+
+    <!-- bower - managing javascript libraries -->
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <!-- end bower -->
+
+    <!-- .js javascript files for the app -->
+    <script src="config.js"></script>
+    <script src="js/rrule.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/weather-service.js"></script>
+    <script src="js/geolocation-service.js"></script>
+    <script src="js/calendar-service.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/annyang-service.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" ng-href="css/main.css" />
+	  <link rel="stylesheet" href="css/weather-icons.css">
+
+  </head>
+
+  <body ng-controller="MirrorCtrl as commands" ng-cloak>
+    <div class="top">
+
+      <!-- Displaying primary readout of Time & Date -->
+      <div class="top-left">
+        <div class="time">{{date.format('LT')}}</div>
+        <div class="date gray">{{date.format('dddd')}}, {{date.format('MMMM Do')}}</div>
+        <br><br><br><br>
+        <!-- Displaying data pulled from Calendar file -->
+        <ul class="calendar">
+            <li class="event" ng-repeat="event in calendar">
+                <div class="event-details">
+                    <span class="day">{{event.start.format('dddd')}}</span>
+                    <span class="summary gray">{{event.SUMMARY}}</span>
+                    <div class="details">{{event.start.format('M/D LT')}}</div>
+                </div>
+                <br>
+            </li>
+        </ul>
+      </div>
+
+      <div class="top-right">
+        <div class="weather">
+          <div class="weather-today">
+            <br>
+            <span class="icon dimmed wi {{currentforecast.wi}}"></span>
+            <br>
+            <span class="temperature">{{currentforecast.temperature}}&deg;</span>
+          </div>
+
+          <br><br><br><br>
+
+          <div class="weather-week" ng-repeat="forecast in weeklyforecast.data" ng-if="$index > 0">
+            <div class="weather-week-day">
+              <span class="day gray"><br>{{forecast.day | uppercase}}</span>
+              <span class="icon-small dimmed wi wi-fw {{forecast.wi}}"></span>
+              <span class="temperature temperature-min">{{forecast.temperatureMax}}&deg;<br></span>
+              <span class="temperature temperature-max">{{forecast.temperatureMin}}&deg;</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

@@ -35,7 +35,7 @@
       <div class="top-left">
         <div class="time">{{date.format('LT')}}</div>
         <div class="date gray">{{date.format('dddd')}}, {{date.format('MMMM Do')}}</div>
-        <br><br><br><br>
+        <br><br><br><br><br><br><br>
         <!-- Displaying data pulled from Calendar file -->
         <ul class="calendar">
             <li class="event" ng-repeat="event in calendar">
@@ -58,7 +58,7 @@
             <span class="temperature">{{currentforecast.temperature}}&deg;</span>
           </div>
 
-          <br><br><br><br>
+          <br><br><br><br><br><br><br>
 
           <div class="weather-week" ng-repeat="forecast in weeklyforecast.data" ng-if="$index > 0">
             <div class="weather-week-day">

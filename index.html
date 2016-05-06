@@ -6,13 +6,12 @@
 
     <script src="js/annyang.js"></script>
 
-    <!-- bower - managing javascript libraries -->
+<!-- bower - the tool that manages the javascript libraries -->
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <!-- end bower -->
 
-    <!-- .js javascript files for the app -->
+<!-- .js javascript files that run the app -->
     <script src="config.js"></script>
     <script src="js/rrule.js"></script>
     <script src="js/app.js"></script>
@@ -22,58 +21,63 @@
     <script src="js/controller.js"></script>
     <script src="js/annyang-service.js"></script>
 
-    <!-- Stylesheets -->
+<!-- Stylesheets: main CSS, and also icons used in weather forecast -->
     <link rel="stylesheet" ng-href="css/main.css" />
-	  <link rel="stylesheet" href="css/weather-icons.css">
-
+    <link rel="stylesheet" href="css/weather-icons.css">
+    
   </head>
-
+    
   <body ng-controller="MirrorCtrl as commands" ng-cloak>
     <div class="top">
-
-      <!-- Displaying primary readout of Time & Date -->
+    <br><br><br><br>
+<!-- Main display of Time and Date -->
+<!-- Using moment.js for formatting -->
       <div class="top-left">
         <div class="time">{{date.format('LT')}}</div>
-        <div class="date gray">{{date.format('dddd')}}, {{date.format('MMMM Do')}}</div>
-        <br><br><br><br><br><br><br>
-        <!-- Displaying data pulled from Calendar file -->
+        <div class="date">{{date.format('dddd')}}, {{date.format('MMMM Do')}}</div>
+	<br><br><br><br><br><br><br>
+
+<!-- Main display of the Calendar info -->
+<!-- Using angular-repeat to loop through all events -->
+<!-- "day" is formatted as "Tuesday" -->
+<!-- "summary" is the title of the event in the shared Calendar file -->
+<!-- "details" appears below the day of an event, formatted like "5/5 4:30 PM" -->
         <ul class="calendar">
-            <li class="event" ng-repeat="event in calendar">
-                <div class="event-details">
-                    <span class="day">{{event.start.format('dddd')}}</span>
-                    <span class="summary gray">{{event.SUMMARY}}</span>
-                    <div class="details">{{event.start.format('M/D LT')}}</div>
-                </div>
-                <br>
-            </li>
+          <li class="event" ng-repeat="event in calendar">
+            <div class="event-details">
+              <span class="day">{{event.start.format('dddd')}}</span>
+              <span class="summary">{{event.SUMMARY}}</span>
+              <div class="details">{{event.start.format('M/D LT')}}</div>
+            </div>
+            <br>
+          </li>
         </ul>
       </div>
 
+<!-- Main display of the Weather -->
+<!-- Using methods from angular weather.js service -->
       <div class="top-right">
         <div class="weather">
           <div class="weather-today">
-            <br>
-            <span class="icon dimmed wi {{currentforecast.wi}}"></span>
-            <br>
+          <br>
+            <span class="icon dimmed wi {{currentforecast.wi}}"></span> <br>
             <span class="temperature">{{currentforecast.temperature}}&deg;</span>
           </div>
-
           <br><br><br><br><br><br><br>
-
+          
+<!-- Display of weather forecast for the upcoming week -->
+<!-- Using angular "ng-repeat" to loop through data file from weather service -->
+<!-- Pulling from forecast data generated in weather.js service -->
           <div class="weather-week" ng-repeat="forecast in weeklyforecast.data" ng-if="$index > 0">
             <div class="weather-week-day">
-              <span class="day gray"><br>{{forecast.day | uppercase}}</span>
+              <span class="day"><br>{{forecast.day | uppercase}}</span>
               <span class="icon-small dimmed wi wi-fw {{forecast.wi}}"></span>
               <span class="temperature temperature-min">{{forecast.temperatureMax}}&deg;<br></span>
               <span class="temperature temperature-max">{{forecast.temperatureMin}}&deg;</span>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
-
   </body>
-
 </html>
